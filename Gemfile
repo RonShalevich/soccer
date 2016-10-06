@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'cowsay' # , github: "johnnyt/cowsay"
 
 gem 'kaminari'
-gem "simple_calendar", "~> 2.0"
+gem 'simple_calendar', '~> 2.0'
 
 gem 'cancancan'
 

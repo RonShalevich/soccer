@@ -1,5 +1,4 @@
-<h1>adding player</h1>
-<%= form_for [current_team, @player] do |f| %>
+<%= form_for [@team, @player] do |f| %>
 <div>
   <%= f.label  :first_name  %>
   <%= f.text_field :first_name %>

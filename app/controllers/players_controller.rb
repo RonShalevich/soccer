@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_action :find_team
+  before_action :find_player, only: [:edit]
 
   def new
     @player = Player.new
@@ -22,7 +23,17 @@ class PlayersController < ApplicationController
   end
 
   def edit
+  end
 
+  def update
+    @player = Player.find params[:id]
+    if @player.update params.require(:player).permit([:first_name,
+                                                      :last_name,
+                                                      :jersey_number])
+      redirect_to team_player_path(@team, @player)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -51,7 +62,7 @@ class PlayersController < ApplicationController
   end
 
   def find_team
-    @team = current_team
+    @team = Team.find params[:team_id] if params[:team_id]
   end
 
   def find_params
