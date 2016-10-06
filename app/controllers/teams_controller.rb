@@ -6,11 +6,11 @@ class TeamsController < ApplicationController
   end
 
   def index
-    @teams = Team.order(created_at: :desc)
+    @teams = current_user.managed_teams.order(created_at: :desc)
   end
 
   def show
-    @team = Team.new
+    @team = Team.find params[:id]
   end
 
   def create

@@ -7,23 +7,29 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.new player_params
+    @team = Team.find params[:team_id]
     if @player.save
-      @player.team[:id] = current_team
+      @team.players << @player
       redirect_to team_path(current_team), notice: 'Player Created'
     else
       flash[:alert] = 'Please fix errors below'
-      render '/teams'
     end
   end
 
   def index
-    @players = Player.order(jersey_number: :desc)
+    @team = Team.find params[:team_id]
+    @players = @team.players.order(jersey_number: :desc)
+  end
+
+  def edit
+
   end
 
   def destroy
     player = Player.find params[:id]
+    @team = Team.find params[:team_id]
     player.destroy
-    redirect_to team_path
+    redirect_to team_path(@team)
   end
 
   def player_params

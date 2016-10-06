@@ -13,9 +13,9 @@
       <%= link_to "Home", root_path%>
       |
       <% if current_team.present? %>
-        <%= link_to "Players", team_players_path(current_team)  %>
+        <%= link_to "Players", team_path(@team)  %>
       <%  else  %>
-        Players    
+        Players
       <% end %>
       |
       <%= link_to "Calendar" %>
@@ -37,6 +37,8 @@
         |
       <% end %>
       <% if user_signed_in? %>
+        <%= link_to 'Show teams', teams_path %>
+        |
         <%= link_to "Add Team", new_team_path %>
         |
         <%= link_to "Sign Out", sessions_path, method: :delete %>

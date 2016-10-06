@@ -1,17 +1,15 @@
-<h1>Welcom to <%= current_team.name %></h1>
+<h1>Welcom Team <%= current_team.name %></h1>
 <div>
   <%= link_to 'Remove Team', team_path, method: :delete %>
-</div>
 |
-<div>
   <%= link_to 'Back', teams_path %>
-</div>
 |
+<%= link_to 'Add Players', new_team_player_path(current_team) %>
+</div>
+<br>
 <div>
-  <%= @team.players.each do |player| %>
-   <%= player.full_name %>
+  <% current_team.players.each do |player| %>
+   <%= link_to player.full_name, team_player_path(current_team, player) %>
+   <hr>
    <% end %>
-</div>
-<div>
-  <%= link_to 'Add Players', new_team_player_path(current_team) %>
-</div>
+ </div>

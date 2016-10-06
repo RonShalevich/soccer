@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @team = Team.new
+    @user = User.find params[:id]
+    
   end
 
   private

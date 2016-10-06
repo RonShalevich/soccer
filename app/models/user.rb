@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :teams, dependent: :destroy
   has_many :managings, dependent: :destroy
   has_many :managed_teams, through: :managings, source: :team
 
