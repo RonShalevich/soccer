@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20161005200834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assignments", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_assignments_on_player_id", using: :btree
-    t.index ["team_id"], name: "index_assignments_on_team_id", using: :btree
-  end
-
   create_table "attendances", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "event_id"
@@ -94,8 +85,6 @@ ActiveRecord::Schema.define(version: 20161005200834) do
     t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
-  add_foreign_key "assignments", "players"
-  add_foreign_key "assignments", "teams"
   add_foreign_key "attendances", "players"
   add_foreign_key "managings", "teams"
   add_foreign_key "managings", "users"
