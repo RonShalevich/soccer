@@ -1,0 +1,9 @@
+<h1>In player index</h1>
+<div>
+  <%#= link_to 'Add Player', new_team_player_path(current_team) %>
+</div>
+<hr>
+<% @players.each do |player| %>
+<%= link_to player.full_name, team_player_path(current_team, player) %>
+<hr>
+<% end %>

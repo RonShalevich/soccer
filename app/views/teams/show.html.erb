@@ -1,0 +1,17 @@
+<h1>Welcom to <%= current_team.name %></h1>
+<div>
+  <%= link_to 'Remove Team', team_path, method: :delete %>
+</div>
+|
+<div>
+  <%= link_to 'Back', teams_path %>
+</div>
+|
+<div>
+  <%= @team.players.each do |player| %>
+   <%= player.full_name %>
+   <% end %>
+</div>
+<div>
+  <%= link_to 'Add Players', new_team_player_path(current_team) %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925170825) do
+ActiveRecord::Schema.define(version: 20161005200834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,12 +34,8 @@ ActiveRecord::Schema.define(version: 20160925170825) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "type"
+    t.string   "game"
     t.datetime "start_time"
-    t.datetime "end_time"
-    t.string   "location"
-    t.string   "duties"
-    t.string   "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -83,7 +79,6 @@ ActiveRecord::Schema.define(version: 20160925170825) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.string   "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,11 +91,11 @@ ActiveRecord::Schema.define(version: 20160925170825) do
     t.boolean  "admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
   add_foreign_key "assignments", "players"
   add_foreign_key "assignments", "teams"
-  add_foreign_key "attendances", "events"
   add_foreign_key "attendances", "players"
   add_foreign_key "managings", "teams"
   add_foreign_key "managings", "users"

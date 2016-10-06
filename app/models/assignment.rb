@@ -1,4 +1,5 @@
 class Assignment < ApplicationRecord
-  belongs_to :player
-  belongs_to :team
+  belongs_to :players
+  belongs_to :teams
+  validates :player_id, uniqueness: { scope: :team_id }
 end
