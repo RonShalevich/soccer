@@ -1,0 +1,17 @@
+<h1>in show page</h1>
+<%= @team.errors.full_messages.join(", ")  %>
+<%= form_for [@user, @team] do |f| %>
+  <div>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<h2>team</h2>
+<% @user.teams.each do |team| %>
+  <%= team.name %>
+  <%= link_to "delete", user_team_path(@user, team),
+                        method: :delete,
+                        data: {confirm: "Are you sure?"} %>
+  <hr>
+<% end %>

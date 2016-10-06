@@ -1,0 +1,5 @@
+<h1>in team index</h1>
+<% @teams.each do |team| %>
+<%= link_to team.name, team_path(team) %>
+<hr>
+<% end %>

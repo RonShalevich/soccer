@@ -1,0 +1,13 @@
+<h1>Hi <%= current_player.full_name %></h1>
+<h2>
+  Jersey: <%= current_player.jersey_number %>
+</h2>
+<p> Position: <%= current_player.position %></p>
+<p> Parent: <%= current_player.parent %></p>
+<div>
+  <%= link_to 'Remove Player', team_player_path(@team, current_player), method: :delete %>
+|
+  <%= link_to 'Back', team_players_path %>
+|
+  <%= link_to 'Edit Player', edit_team_player_path(@team, current_player) %>
+</div>

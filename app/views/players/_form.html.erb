@@ -1,0 +1,24 @@
+<h1>adding player</h1>
+<%= form_for [current_team, @player] do |f| %>
+<div>
+  <%= f.label  :first_name  %>
+  <%= f.text_field :first_name %>
+</div>
+<div>
+  <%= f.label  :last_name  %>
+  <%= f.text_field :last_name %>
+</div>
+<div>
+  <%= f.label  :jersey_number  %>
+  <%= f.number_field :jersey_number %>
+</div>
+<div>
+  <%= f.label  :position  %>
+  <%= f.text_field :position %>
+</div>
+<div>
+  <%= f.label  :parent  %>
+  <%= f.text_field :parent %>
+</div>
+  <%= f.submit %>
+<% end %>
