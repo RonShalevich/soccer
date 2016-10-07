@@ -16,9 +16,9 @@
       <tr>
         <td><%= event.game %></td>
         <td><%= event.start_time %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', team_event_path(@team, event) %></td>
+        <td><%= link_to 'Edit', edit_team_event_path(@team, event) %></td>
+        <td><%= link_to 'Destroy', team_event_path(@team, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,17 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_team_event_path(@team) %>
+<%= month_calendar do |date| %>
+  <%= date %>
+<% end %>
+
+<!-- <%= month_calendar events: @events do |date, meetings| %>
+  <%= date %>
+
+  <% @events.each do |event| %>
+    <div>
+      <%= event.game %>
+    </div>
+  <% end %>
+<% end %> -->

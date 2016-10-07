@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :teams do
     resources :players
+    resources :events
   end
 
   resources :sessions, only: [:new, :create] do
