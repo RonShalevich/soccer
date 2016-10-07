@@ -4,6 +4,7 @@ class Team < ApplicationRecord
   has_many   :users, through: :managings
 
   has_many   :players, dependent: :destroy
+  has_many   :events, dependent: :destroy
 
   validates  :name, presence: true
 end

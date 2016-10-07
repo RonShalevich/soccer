@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006155455) do
+ActiveRecord::Schema.define(version: 20161007183723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20161006155455) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "team_id"
+    t.index ["team_id"], name: "index_events_on_team_id", using: :btree
   end
 
   create_table "managings", force: :cascade do |t|
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20161006155455) do
   end
 
   add_foreign_key "attendances", "players"
+  add_foreign_key "events", "teams"
   add_foreign_key "managings", "teams"
   add_foreign_key "managings", "users"
   add_foreign_key "messages", "users"

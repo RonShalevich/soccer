@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :find_team
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @team = Team.find params[:team_id]
+    @events = @team.events.order(start_time: :desc)
   end
 
   # GET /events/1
@@ -29,6 +30,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        @team.events << @event
         format.html { redirect_to team_event_url(@team, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -55,7 +57,9 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event.destroy
+    event = Event.find params[:id]
+    @team = Team.find params[:team_id]
+    event.destroy
     respond_to do |format|
       format.html { redirect_to team_events_path(@team), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }

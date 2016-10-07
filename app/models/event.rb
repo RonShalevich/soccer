@@ -1,3 +1,6 @@
 class Event < ApplicationRecord
-  has_many :attendances
+  belongs_to :team
+
+  validates :game, presence: true
+  validates :start_time, presence: true
 end
