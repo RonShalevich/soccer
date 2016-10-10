@@ -1,0 +1,13 @@
+<h1>Send your Message</h1>
+<%= @message.errors.full_messages.join(", ") %>
+<%= form_for @message do |f| %>
+  <div>
+    <%= f.label :subjuct %>
+    <%= f.text_field :subject %>
+  </div>
+  <div>
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </div>
+<%= f.submit "Create!" %>
+<% end %>

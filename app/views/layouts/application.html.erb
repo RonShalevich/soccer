@@ -16,6 +16,8 @@
         <%= link_to "Players", team_players_path(current_team)  %>
         |
         <%= link_to "Calendar", team_events_path(@team) %>
+        |
+        <%= link_to "Communication" %>
       <%  else  %>
         Players
       <% end %>
@@ -23,7 +25,6 @@
       |
       <%= link_to "Linup" %>
       |
-      <%= link_to "Communication" %>
       |
       <% if user_signed_in? %>
         Welcome <%= current_user.full_name %>
