@@ -1,12 +1,9 @@
 <h1>Hack Chat</h1>
-
 <ul id="email">
     <%= render @messages %>
 </ul>
-
 <%= form_for Message.new, remote: true do |f| %>
     <%= f.text_field :content %>
     <%= f.submit "Send" %>
 <% end %>
-
 <%= subscribe_to "/messages/new" %>

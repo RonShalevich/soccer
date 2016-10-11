@@ -1,9 +1,13 @@
 <h1>Create a Team</h1>
 <%= @team.errors.full_messages.join(", ") %>
 <%= form_for @team do |f| %>
-  <div>
+  <div class="input-field col s6">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-<%= f.submit "Create!" %>
+  <div class="input-field col s3">
+  <button class="btn waves-effect waves-light" type="submit" name="action">Create
+     <i class="material-icons right"></i>
+  </button>
+</div>
 <% end %>

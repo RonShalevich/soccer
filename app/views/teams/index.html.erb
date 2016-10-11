@@ -1,5 +1,8 @@
 <h1>in team index</h1>
-<% @teams.each do |team| %>
-<%= link_to team.name, team_path(team) %>
-<hr>
-<% end %>
+<div class="collection">
+  <% @teams.each do |team| %>
+  <div class="collection-item">
+  <%= link_to team.name, team_players_path(team) %>
+</div>
+  <% end %>
+</div>

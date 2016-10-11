@@ -11,7 +11,7 @@ class PlayersController < ApplicationController
     @team = Team.find params[:team_id]
     if @player.save
       @team.players << @player
-      redirect_to team_path(current_team), notice: 'Player Created'
+      redirect_to team_players_path(@team), notice: 'Player Created'
     else
       flash[:alert] = 'Please fix errors below'
     end
@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
     player = Player.find params[:id]
     @team = Team.find params[:team_id]
     player.destroy
-    redirect_to team_path(@team)
+    redirect_to team_players_path(@team)
   end
 
   def player_params

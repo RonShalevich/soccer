@@ -2,55 +2,71 @@
 <html>
   <head>
     <title>Soccer</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="">
-      <%= link_to "Home", root_path%>
-      |
-      <% if current_team.present? %>
-        <%= link_to "Players", team_players_path(current_team)  %>
-        |
-        <%= link_to "Calendar", team_events_path(@team) %>
-        |
-        <%= link_to "Communication" %>
-      <%  else  %>
-        Players
-      <% end %>
-      |
-      |
-      <%= link_to "Linup" %>
-      |
-      |
-      <% if user_signed_in? %>
-        Welcome <%= current_user.full_name %>
-      <% end %>
+    <div class="container-top">
+    <nav>
+      <div class="nav-wrapper">
+        <!-- <ul class="left hide-on-med-and-down"> -->
+          <%= link_to "Home", root_path%>
+          |
+          <% if current_team.present? %>
+            <%= link_to "Players", team_players_path(@team)  %>
+            |
+            <%= link_to "Calendar", team_events_path(@team) %>
+            |
+            <%= link_to "Communication", new_team_message_path(@team) %>
+            |
+          <%  else  %>
+            Players
+            |
+            Calendar
+            |
+            Communication
+          <% end %>
+          <%#= link_to "Linup" %>
+          <% if user_signed_in? %>
+            Welcome <%= current_user.full_name %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<div class="divider"></div>
+<div class="row">
+          <nav>
+            <% if current_team.present? %>
+              <%= link_to current_team.name, team_players_path(@team) %>
+            <% end %>
+          </nav>
+          <div class="container-side">
+          <div class="col s12 m2 l2">
+            <ul class='right hide-on-small-and-down'>
+            <% if current_team.present? %>
+              <li><%= link_to 'Add Players', new_team_player_path(current_team) %></li>
+              <li><%= link_to 'Back', team_players_path(@team)%></li>
+            <% end %>
+        <% if user_signed_in? %>
+          <li><%= link_to "Add Team", new_team_path %></li>
+          <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_path %></li>
+          <li><%= link_to "Sign In", new_session_path %></li>
+        <% end %>
+      </ul>
+      </div>
     </div>
-    <hr>
-    <div class="">
-      <% if current_team.present? %>
-        welcome <%= current_team.name %>
-        |
-        <%= link_to 'Back', teams_path%>
-        |
-      <% end %>
-      <% if user_signed_in? %>
-        <%= link_to "Add Team", new_team_path %>
-        |
-        <%= link_to "Sign Out", sessions_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_path %>
-        |
-        <%= link_to "Sign In", new_session_path %>
-      <% end %>
-    </div>
-    <hr>
-    <div class="">
+  <div class="container-main">
+    <div class="col s12 m10 l10">
       <%= yield %>
+      <%= render 'layouts/nav_bar' %>
     </div>
+  </div>
+</div>
   </body>
 </html>

@@ -25,9 +25,9 @@ gem 'react-rails'
 
 gem 'chosen-rails'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+# gem 'bootstrap-sass', '~> 3.3.6'
 #gem 'simple_form'
-
+gem 'materialize-sass'
 gem 'friendly_id'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
