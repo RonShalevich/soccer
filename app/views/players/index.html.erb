@@ -1,8 +1,16 @@
-<h1>In player index</h1>
+<h1>Your Team</h1>
 <div class="collection">
   <% @players.each do |player| %>
   <div class="collection-item">
+    <%= image_tag player.avatar_url(:thumb) if player.avatar? %>
     <%= link_to player.full_name, team_player_path(current_team, player) %>
   </div>
   <% end %>
 </div>
+<br><br>
+<a href="<%= new_team_player_path(current_team)  %>" class="btn waves-effect waves-light" type="submit" name="action">Add Player
+   <i class="material-icons right"></i>
+</a>
+<a href="<%= team_players_path(@team)  %>" class="btn waves-effect waves-light" type="submit" name="action">Back
+   <i class="material-icons right"></i>
+</a>

@@ -1,8 +1,8 @@
 <h1>Send your Message</h1>
 <%= @message.errors.full_messages.join(", ") %>
-<%= form_for [@team, message] do |f| %>
+<%= form_for [@team, @message] do |f| %>
   <div class='input-field col s12'>
-    <%= f.label :subjuct %>
+    <%= f.label :subject %>
     <%= f.text_field :subject %>
   </div>
   <div class='input-field col s12'>

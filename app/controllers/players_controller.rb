@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
 
   def new
     @player = Player.new
+    @player.avatar = params[:file]
   end
 
   def create
@@ -27,9 +28,13 @@ class PlayersController < ApplicationController
 
   def update
     @player = Player.find params[:id]
-    if @player.update params.require(:player).permit([:first_name,
-                                                      :last_name,
-                                                      :jersey_number])
+    @player.avatar = params[:file]
+    if @player.update params.require(:player).permit(:first_name,
+                                                     :last_name,
+                                                     :jersey_number,
+                                                     :position,
+                                                     :parent,
+                                                     :avatar)
       redirect_to team_player_path(@team, @player)
     else
       render :edit
@@ -48,7 +53,8 @@ class PlayersController < ApplicationController
                                    :last_name,
                                    :jersey_number,
                                    :position,
-                                   :parent)
+                                   :parent,
+                                   :avatar)
   end
 
   def show

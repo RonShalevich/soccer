@@ -1,3 +1,4 @@
+@import 'simple_calendar';
 @import "materialize";
 
 @import "materialize/components/color";
@@ -19,9 +20,10 @@ body {
   margin-bottom: 0px;
   font-family: 'Prompt', sans-serif;
   font-size: 16px;
-  min-height: 500px;
-  background-color: #2e7d32;
-
+  min-height: 100%;
+  color: white;
+  background-image: url('background.jpg');
+  background-size: cover;
 }
 nav {
   background: black;
@@ -29,8 +31,44 @@ nav {
   padding: 5px;
 }
 
-.container-main {
-  height: 100%;
-  border-left: 3px solid #ef6c00;
-  float: left;
+.delete{
+  float: right;
+  font: red;
+}
+.parallax-container {
+      height: 500px;
+      width: 100%;
+    }
+.brand-logo img {
+  height: 59px;
+}
+
+.team {
+  color: red;
+  font-size: 22px;
+  background-color: rgba(11, 24, 15, 0.48);
+  text-align: center;
+}
+
+.tabsnew {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+}
+
+a {
+  color:white;
+}
+.collection {
+  width: 50%;
+  margin: auto;
+}
+
+.collection .collection-item {
+  background-color: rgba(49, 101, 51, 0.5);
+  height: 60px;
+  text-align: inherit;
+}
+.input-field.col .prefix ~ label, .input-field.col .prefix ~ .validate ~ label{
+  color: white;
 }

@@ -12,61 +12,48 @@
     <div class="container-top">
     <nav>
       <div class="nav-wrapper">
-        <!-- <ul class="left hide-on-med-and-down"> -->
-          <%= link_to "Home", root_path%>
-          |
+        <div class="brand-logo right">
+          <%= image_tag image_path('fire-ball') %>
+        </div>
+        <ul class='left'>
+          <li class='tab col s2'><%= link_to "Home", root_path %></li>
           <% if current_team.present? %>
-            <%= link_to "Players", team_players_path(@team)  %>
-            |
-            <%= link_to "Calendar", team_events_path(@team) %>
-            |
-            <%= link_to "Communication", new_team_message_path(@team) %>
-            |
+            <li class='tab col s2'><%= link_to "Players", team_players_path(@team)  %></li>
+            <li class='tab col s2'><%= link_to "Calendar", team_events_path(@team) %></li>
+            <li class='tab col s2'><%= link_to "Communication", new_team_message_path(@team) %></li>
           <%  else  %>
-            Players
-            |
-            Calendar
-            |
-            Communication
+            <li class='tab col s2 disabled'><%= link_to "Players"  %></li>
+            <li class='tab col s2 disabled'>  <%= link_to "Calendar" %></li>
+            <li class='tab col s2 disabled'>  <%= link_to "Communication" %></li>
           <% end %>
-          <%#= link_to "Linup" %>
           <% if user_signed_in? %>
-            Welcome <%= current_user.full_name %>
+            Welcome <%= current_user.first_name %>
+            <li class='tab col s2'>  <%= link_to "Sign Out", sessions_path, method: :delete %></li>
+          <% else %>
+            <li class='tab col s2'><%= link_to "Sign Up", new_user_path %></li>
+            <li class='tab col s2'>  <%= link_to "Sign In", new_session_path %></li>
           <% end %>
         </ul>
       </div>
+      </div>
     </nav>
   </div>
-<div class="divider"></div>
-<div class="row">
-          <nav>
-            <% if current_team.present? %>
-              <%= link_to current_team.name, team_players_path(@team) %>
-            <% end %>
-          </nav>
-          <div class="container-side">
-          <div class="col s12 m2 l2">
-            <ul class='right hide-on-small-and-down'>
-            <% if current_team.present? %>
-              <li><%= link_to 'Add Players', new_team_player_path(current_team) %></li>
-              <li><%= link_to 'Back', team_players_path(@team)%></li>
-            <% end %>
-        <% if user_signed_in? %>
-          <li><%= link_to "Add Team", new_team_path %></li>
-          <li><%= link_to "Sign Out", sessions_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "Sign Up", new_user_path %></li>
-          <li><%= link_to "Sign In", new_session_path %></li>
-        <% end %>
-      </ul>
+  <div class="team">
+    <div id="name">
+    </div>
+    <% if current_team.present? %>
+      <%= link_to current_team.name, team_players_path(@team) %>
+    <% end %>
+  </div>
+    <div class="container-side">
+      <div class="col s12 m2 l2">
+    </div>
+    </div>
+    <div class="container-main">
+      <div class="col s12 m10 l10">
+        <%= yield %>
+        <%= render 'layouts/nav_bar' %>
       </div>
     </div>
-  <div class="container-main">
-    <div class="col s12 m10 l10">
-      <%= yield %>
-      <%= render 'layouts/nav_bar' %>
-    </div>
-  </div>
-</div>
   </body>
 </html>

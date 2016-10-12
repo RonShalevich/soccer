@@ -16,17 +16,21 @@
       <tr>
         <td><%= event.game %></td>
         <td><%= event.start_time %></td>
-        <td><%= link_to 'Show', team_event_path(@team, event) %></td>
-        <td><%= link_to 'Edit', edit_team_event_path(@team, event) %></td>
-        <td><%= link_to 'Destroy', team_event_path(@team, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='btn waves-effect waves-light'><%= link_to 'Show', team_event_path(@team, event) %></td>
+        <td class='btn waves-effect waves-light'><%= link_to 'Edit', edit_team_event_path(@team, event) %></td>
+        <td class='btn waves-effect waves-light'><%= link_to 'Destroy', team_event_path(@team, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<a href="<%= team_players_path(@team)  %>" class="btn waves-effect waves-light" type="submit" name="action">Back
+   <i class="material-icons right"></i>
+</a>
+
 <br>
 
-<%= link_to 'New Event', new_team_event_path(@team) %>
+<a href="<%= link_to 'New Event', new_team_event_path(@team) %>
 <%= month_calendar do |date| %>
   <%= date %>
 <% end %>

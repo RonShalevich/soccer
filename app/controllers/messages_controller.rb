@@ -1,7 +1,6 @@
-class MessageController < ApplicationController
+class MessagesController < ApplicationController
   before_action :find_team
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
 
   def new
     @team = Team.find params[:team_id]
@@ -11,10 +10,12 @@ class MessageController < ApplicationController
   def create
     @team = Team.find params[:team_id]
     @message = Message.new message_params
-
+    @message.team = @team
     if @message.save
-      @team.message << @message
-      redirect_to team_path(@team), notice: 'Message Sent'
+      @team.users.each do |user|
+        MessagesMailer.notify_parent(user, @message).deliver_now
+      end
+      redirect_to team_players_path(@team), notice: 'Message Sent'
     else
       flash[:alert] = 'Please fix errors below'
       render '/teams'
@@ -24,11 +25,11 @@ class MessageController < ApplicationController
   private
 
   def set_message
-    @event = Event.find(params[:id])
+    @message = Message.find(params[:id])
   end
 
   def message_params
-    params.require(:event).permit(:text, :subject)
+    params.require(:message).permit(:text, :subject)
   end
 
   def find_team

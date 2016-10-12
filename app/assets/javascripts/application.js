@@ -15,3 +15,9 @@
 //= require materialize
 //= require materialize/extras/nouislider
 //= require_tree .
+  // $('.carousel.carousel-slider').carousel({full_width: true});
+  $(document).ready(function(){
+    $('.carousel.carousel-slider').carousel({full_width: true});
+    $('.parallax').parallax();
+    // $('ul.tabs').tabs();
+  });
