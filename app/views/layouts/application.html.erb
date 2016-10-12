@@ -13,7 +13,9 @@
     <nav>
       <div class="nav-wrapper">
         <div class="brand-logo right">
-          <%= image_tag image_path('fire-ball') %>
+          <a href="<%= demo_users_path  %>">
+            <%= image_tag image_path('fire-ball') %>
+          </a>
         </div>
         <ul class='left'>
           <li class='tab col s2'><%= link_to "Home", root_path %></li>
@@ -40,10 +42,10 @@
   </div>
   <div class="team">
     <div id="name">
-    </div>
     <% if current_team.present? %>
       <%= link_to current_team.name, team_players_path(@team) %>
     <% end %>
+  </div>
   </div>
     <div class="container-side">
       <div class="col s12 m2 l2">

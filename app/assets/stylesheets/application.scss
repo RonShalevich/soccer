@@ -41,8 +41,11 @@ nav {
     }
 .brand-logo img {
   height: 59px;
+  margin-right: 6vw;
 }
-
+.card img {
+  width: 100%;
+}
 .team {
   color: red;
   font-size: 22px;
@@ -58,6 +61,10 @@ nav {
 
 a {
   color:white;
+  align-items: center;
+}
+h1 {
+      text-align: center;
 }
 .collection {
   width: 50%;
@@ -71,4 +78,22 @@ a {
 }
 .input-field.col .prefix ~ label, .input-field.col .prefix ~ .validate ~ label{
   color: white;
+}
+.card-panel  {
+  width: 50%;
+}
+#picture{
+  width: 50%;
+}
+h2 {
+  text-align: center;
+  color: black;
+}
+.white {
+      background-color: rgb(192, 209, 222) !important;
+}
+
+.grey-text.text-darken-3 {
+  text-align: center;
+  color: black;
 }

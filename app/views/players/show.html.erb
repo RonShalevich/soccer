@@ -1,28 +1,26 @@
 
 <div class="row">
-        <div class="`col s12 m6`">
-          <div class="card-panel hoverable">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Hi <%= current_player.full_name %></span>
-              <p>
-                Jersey: <%= current_player.jersey_number %>
-              </p>
-              <p><%= image_tag current_player.avatar %></p>
-              <p> Position: <%= current_player.position %></p>
-              <p> Parent: <%= current_player.parent %></p>
-            </div>
-            <div class="card-action">
-              <%= link_to 'Remove Player', team_player_path(@team, current_player), method: :delete %>
-            |
-              <%= link_to 'Back', team_players_path %>
-            |
-              <%= link_to 'Edit Player', edit_team_player_path(@team, current_player) %>
-            </div>
-          </div>
+    <div class="card-panel hoverable">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Hi <%= current_player.full_name %></span>
+          <p>
+            Jersey: <%= current_player.jersey_number %>
+          </p>
+          <p id='picture'><%= image_tag current_player.avatar %></p>
+          <p> Position: <%= current_player.position %></p>
+          <p> Parent: <%= current_player.parent %></p>
         </div>
+        <div class="card-action">
+          <%= link_to 'Remove Player', team_player_path(@team, current_player), method: :delete %>
+            |
+          <%= link_to 'Back', team_players_path %>
+            |
+          <%= link_to 'Edit Player', edit_team_player_path(@team, current_player) %>
         </div>
       </div>
+    </div>
+</div>
 
 
       <!-- <div class="carousel carousel-slider center" data-indicators="true">
