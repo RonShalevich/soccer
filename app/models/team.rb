@@ -11,5 +11,4 @@ class Team < ApplicationRecord
   def team_name
     "#{name}".squeeze(' ').strip.titleize
   end
-
 end
