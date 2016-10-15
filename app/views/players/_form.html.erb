@@ -1,24 +1,29 @@
-<h1>adding player</h1>
-<%= form_for [current_team, @player] do |f| %>
-<div>
+<%= form_for [@team, @player] do |f| %>
+<div class="input-field col s6">
   <%= f.label  :first_name  %>
   <%= f.text_field :first_name %>
 </div>
-<div>
+<div class="input-field col s6">
   <%= f.label  :last_name  %>
   <%= f.text_field :last_name %>
 </div>
-<div>
+<div class="input-field col s6">
   <%= f.label  :jersey_number  %>
   <%= f.number_field :jersey_number %>
 </div>
-<div>
+<div class="input-field col s6">
   <%= f.label  :position  %>
   <%= f.text_field :position %>
 </div>
-<div>
+<div class="input-field col s6">
   <%= f.label  :parent  %>
   <%= f.text_field :parent %>
 </div>
-  <%= f.submit %>
-<% end %>
+<div class='btn waves-effect waves-light'>
+   <%= f.file_field :avatar %>
+</div>
+<div class="input-field col s3">
+  <button class="btn waves-effect waves-light" type="submit" name="action">Add Player
+     <i class="material-icons right"></i>
+  </button><% end %>
+</div>

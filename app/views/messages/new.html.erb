@@ -1,0 +1,15 @@
+<h1>Send your Message</h1>
+<%= @message.errors.full_messages.join(", ") %>
+<%= form_for [@team, @message] do |f| %>
+  <div class='input-field col s12'>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+  </div>
+  <div class='input-field col s12'>
+    <%= f.label :text %>
+    <%= f.text_area :text %>
+  </div>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Send
+     <i class="material-icons right"></i>
+  </button>
+<% end %>

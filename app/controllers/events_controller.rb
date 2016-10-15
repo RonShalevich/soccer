@@ -1,15 +1,17 @@
 class EventsController < ApplicationController
+  before_action :find_team
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @team = Team.find params[:team_id]
+    @events = @team.events.order(start_time: :desc)
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = Event.find params[:id]
   end
 
   # GET /events/new
@@ -28,7 +30,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        @team.events << @event
+        format.html { redirect_to team_event_url(@team, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to team_events_path(@team), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -54,9 +57,11 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event.destroy
+    event = Event.find params[:id]
+    @team = Team.find params[:team_id]
+    event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to team_events_path(@team), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +75,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:game, :start_time)
+    end
+
+    def find_team
+      @team = Team.find params[:team_id] if params[:team_id]
     end
 end

@@ -2,55 +2,60 @@
 <html>
   <head>
     <title>Soccer</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="">
-      <%= link_to "Home", root_path%>
-      |
-      <% if current_team.present? %>
-        <%= link_to "Players", team_path(@team)  %>
-      <%  else  %>
-        Players
-      <% end %>
-      |
-      <%= link_to "Calendar" %>
-      |
-      <%= link_to "Linup" %>
-      |
-      <%= link_to "Communication" %>
-      |
-      <% if user_signed_in? %>
-        Welcome <%= current_user.full_name %>
-      <% end %>
+    <div class="container-top">
+    <nav>
+      <div class="nav-wrapper">
+        <div class="brand-logo right">
+          <a href="<%= demo_users_path  %>">
+            <%= image_tag image_path('fire-ball') %>
+          </a>
+        </div>
+        <ul class='left'>
+          <li class='tab col s2'><%= link_to "Home", root_path %></li>
+          <% if current_team.present? %>
+            <li class='tab col s2'><%= link_to "Players", team_players_path(@team)  %></li>
+            <li class='tab col s2'><%= link_to "Calendar", team_events_path(@team) %></li>
+            <li class='tab col s2'><%= link_to "Communication", new_team_message_path(@team) %></li>
+          <%  else  %>
+            <li class='tab col s2 disabled'><%= link_to "Players"  %></li>
+            <li class='tab col s2 disabled'>  <%= link_to "Calendar" %></li>
+            <li class='tab col s2 disabled'>  <%= link_to "Communication" %></li>
+          <% end %>
+          <% if user_signed_in? %>
+            Welcome <%= current_user.first_name %>
+            <li class='tab col s2'>  <%= link_to "Sign Out", sessions_path, method: :delete %></li>
+          <% else %>
+            <li class='tab col s2'><%= link_to "Sign Up", new_user_path %></li>
+            <li class='tab col s2'>  <%= link_to "Sign In", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      </div>
+    </nav>
+  </div>
+  <div class="team">
+    <div id="name">
+    <% if current_team.present? %>
+      <%= link_to current_team.name, team_players_path(@team) %>
+    <% end %>
+  </div>
+  </div>
+    <div class="container-side">
+      <div class="col s12 m2 l2">
     </div>
-    <hr>
-    <div class="">
-      <% if current_team.present? %>
-        welcome <%= current_team.name %>
-        |
-        <%= link_to 'Back', teams_path%>
-        |
-      <% end %>
-      <% if user_signed_in? %>
-        <%= link_to 'Show teams', teams_path %>
-        |
-        <%= link_to "Add Team", new_team_path %>
-        |
-        <%= link_to "Sign Out", sessions_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_path %>
-        |
-        <%= link_to "Sign In", new_session_path %>
-      <% end %>
     </div>
-    <hr>
-    <div class="">
-      <%= yield %>
+    <div class="container-main">
+      <div class="col s12 m10 l10">
+        <%= yield %>
+        <%= render 'layouts/nav_bar' %>
+      </div>
     </div>
   </body>
 </html>

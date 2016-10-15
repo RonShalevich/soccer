@@ -1,8 +1,7 @@
-<%= form_for(event) do |f| %>
+<%= form_for([@team, event]) do |f| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
       <ul>
       <% event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,18 +9,16 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :game %>
-    <%= f.text_field :game %>
+  <div class="row">
+    <div <div class="input-field col s12">
+      <%= f.label :game %>
+      <%= f.text_field :game %>
+    </div>
+      <%= f.label :start_time %>
+      <%= f.datetime_local_field :start_time %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add Event
+       <i class="material-icons right"></i>
+    </button>
 <% end %>
