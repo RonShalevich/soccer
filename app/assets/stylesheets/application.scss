@@ -1,0 +1,120 @@
+@import 'simple_calendar';
+@import "materialize";
+
+@import "materialize/components/color";
+// $primary-color: color("blue", "lighten-2") !default;
+// $secondary-color: color("yellow") !default;
+@import 'materialize';
+@import "materialize/extras/nouislider";
+
+
+html, body {
+  margin: 0px;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+  min-height: 100%;
+  color: white;
+  background-image: url('background.jpg');
+  background-size: cover;
+}
+nav {
+  background: black;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.delete{
+  float: right;
+  font: red;
+}
+.parallax-container {
+    height: 500px;
+    width: 170%;
+    margin-left: -20vw;
+    }
+.brand-logo img {
+  height: 59px;
+  margin-right: 6vw;
+}
+.card img {
+  width: 100%;
+}
+.team {
+  color: red;
+  font-size: 22px;
+  background-color: rgba(11, 24, 15, 0.48);
+  text-align: center;
+}
+
+.tabsnew {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+}
+
+a {
+  color:white;
+  align-items: center;
+}
+h1 {
+      text-align: center;
+}
+.collection {
+  width: 100%;
+  margin: auto;
+}
+
+.collection .collection-item {
+  background-color: rgba(49, 101, 51, 0.5);
+  height: 60px;
+  text-align: inherit;
+}
+.input-field.col .prefix ~ label, .input-field.col .prefix ~ .validate ~ label{
+  color: white;
+}
+.card-panel  {
+  width: 50%;
+}
+#picture{
+  width: 50%;
+}
+h2 {
+  text-align: center;
+  color: black;
+}
+.white {
+      background-color: rgb(192, 209, 222) !important;
+      width: 170%;
+margin-left: -20vw;
+}
+
+.grey-text.text-darken-3 {
+  text-align: center;
+  color: black;
+}
+.btn {
+  background-color: rgba(41, 192, 40, 0.39);
+}
+.btn:hover{
+  background-color: rgba(51, 234, 92, 0.45);
+}
+div.container-main {
+  width: 60%;
+margin-left: 20vw;
+}
+.input-field label {
+    color: white;
+}
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}

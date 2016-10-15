@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
     @team = Team.new team_params
     if @team.save
       @team.users << current_user
-      redirect_to team_path(@team), notice: 'Team Created'
+      redirect_to teams_path, notice: 'Team Created'
     else
       flash[:alert] = 'Please fix errors below'
       render '/teams'

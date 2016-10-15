@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006155455) do
+ActiveRecord::Schema.define(version: 20161012000324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20161006155455) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "team_id"
+    t.index ["team_id"], name: "index_events_on_team_id", using: :btree
   end
 
   create_table "managings", force: :cascade do |t|
@@ -46,6 +48,9 @@ ActiveRecord::Schema.define(version: 20161006155455) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "subject"
+    t.integer  "team_id"
+    t.index ["team_id"], name: "index_messages_on_team_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -58,6 +63,7 @@ ActiveRecord::Schema.define(version: 20161006155455) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "team_id"
+    t.string   "avatar"
     t.index ["team_id"], name: "index_players_on_team_id", using: :btree
   end
 
@@ -84,12 +90,17 @@ ActiveRecord::Schema.define(version: 20161006155455) do
     t.boolean  "admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "country_code"
+    t.string   "phone_number"
+    t.string   "authy_id"
     t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
   add_foreign_key "attendances", "players"
+  add_foreign_key "events", "teams"
   add_foreign_key "managings", "teams"
   add_foreign_key "managings", "users"
+  add_foreign_key "messages", "teams"
   add_foreign_key "messages", "users"
   add_foreign_key "players", "teams"
   add_foreign_key "receivings", "messages", column: "messages_id"

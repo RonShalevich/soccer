@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  root 'teams#index'
   resources :events
-  root 'welcome#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users do
+    get '/demo' => :demo, on: :collection
+  end
   resources :teams do
     resources :players
+    resources :events
+    resources :messages
   end
 
   resources :sessions, only: [:new, :create] do
