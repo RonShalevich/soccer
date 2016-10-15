@@ -36,8 +36,9 @@ nav {
   font: red;
 }
 .parallax-container {
-      height: 500px;
-      width: 100%;
+    height: 500px;
+    width: 170%;
+    margin-left: -20vw;
     }
 .brand-logo img {
   height: 59px;
@@ -91,6 +92,8 @@ h2 {
 }
 .white {
       background-color: rgb(192, 209, 222) !important;
+      width: 170%;
+margin-left: -20vw;
 }
 
 .grey-text.text-darken-3 {
@@ -102,4 +105,16 @@ h2 {
 }
 .btn:hover{
   background-color: rgba(51, 234, 92, 0.45);
+}
+div.container-main {
+  width: 60%;
+margin-left: 20vw;
+}
+.input-field label {
+    color: white;
+}
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
 }
