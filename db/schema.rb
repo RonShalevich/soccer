@@ -17,10 +17,8 @@ ActiveRecord::Schema.define(version: 20161012000324) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer  "player_id"
-    t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_attendances_on_event_id", using: :btree
     t.index ["player_id"], name: "index_attendances_on_player_id", using: :btree
   end
 
@@ -90,9 +88,6 @@ ActiveRecord::Schema.define(version: 20161012000324) do
     t.boolean  "admin"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "country_code"
-    t.string   "phone_number"
-    t.string   "authy_id"
     t.index ["email"], name: "index_users_on_email", using: :btree
   end
 
